@@ -1,12 +1,13 @@
 "use client";
 
+import questions from "../data/questions.json";
+
 
 type House = {
-  id: string;
+  id: "red" | "blue" | "green" | "yellow";
   name: string;
   color: string;
 };
-
 
 
 type Props = {
@@ -26,7 +27,6 @@ type Props = {
   finishQuestion: ()=>void;
 
 };
-
 
 
 
@@ -50,7 +50,7 @@ export default function QuestionModal({
 
 
 
-  if(selectedQuestion===null){
+  if(selectedQuestion === null){
 
     return (
 
@@ -67,15 +67,11 @@ export default function QuestionModal({
 
       >
 
-        <h2
-
-          className="
-          text-4xl
-          font-black
-          text-center
-          "
-
-        >
+        <h2 className="
+        text-4xl
+        font-black
+        text-center
+        ">
 
           SELECT QUESTION
 
@@ -87,6 +83,16 @@ export default function QuestionModal({
     );
 
   }
+
+
+
+
+
+  const currentQuestion =
+    questions.find(
+      (q)=>q.id === selectedQuestion
+    );
+
 
 
 
@@ -127,16 +133,18 @@ export default function QuestionModal({
 
 
 
+
       <div
 
         className="
         mt-8
-        rounded-2xl
+        rounded-3xl
         bg-white
         p-8
         "
 
       >
+
 
         <p
 
@@ -147,7 +155,7 @@ export default function QuestionModal({
 
         >
 
-          Question {selectedQuestion} content goes here.
+          {currentQuestion?.question}
 
         </p>
 
@@ -164,7 +172,9 @@ export default function QuestionModal({
 
         <button
 
-          onClick={()=>setAnswerRevealed(true)}
+          onClick={()=>
+            setAnswerRevealed(true)
+          }
 
           className="
           mt-8
@@ -183,8 +193,8 @@ export default function QuestionModal({
 
         </button>
 
-      )}
 
+      )}
 
 
 
@@ -198,197 +208,181 @@ export default function QuestionModal({
         <>
 
 
-
-        <div
-
-          className="
-          mt-8
-          rounded-2xl
-          bg-green-100
-          p-6
-          "
-
-        >
-
-
-          <h3
+          <div
 
             className="
-            text-2xl
+            mt-8
+            rounded-3xl
+            bg-green-100
+            p-6
+            "
+
+          >
+
+
+            <h3
+
+              className="
+              text-2xl
+              font-black
+              "
+
+            >
+
+              CORRECT ANSWER
+
+            </h3>
+
+
+
+            <p
+
+              className="
+              text-3xl
+              font-bold
+              mt-3
+              "
+
+            >
+
+              {currentQuestion?.answer}
+
+            </p>
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+          <div
+
+            className="
+            grid
+            md:grid-cols-2
+            gap-5
+            mt-8
+            "
+
+          >
+
+
+
+          {
+
+            houseData.map((house)=>{
+
+
+              const done =
+              awarded.includes(house.id);
+
+
+
+
+              return (
+
+                <button
+
+                  key={house.id}
+
+                  disabled={done}
+
+                  onClick={()=>
+                    givePoints(house.id)
+                  }
+
+
+                  className="
+                  rounded-3xl
+                  p-6
+                  text-xl
+                  font-black
+                  hover:scale-105
+                  transition
+                  "
+
+                  style={{
+
+                    backgroundColor:
+                    house.color,
+
+
+                    color:
+                    house.id==="red"
+                    ?
+                    "white"
+                    :
+                    "black",
+
+
+                    opacity:
+                    done
+                    ?
+                    0.5
+                    :
+                    1
+
+                  }}
+
+                >
+
+
+                  {
+                    done
+                    ?
+                    "✅ AWARDED"
+                    :
+                    `${house.name} +10`
+                  }
+
+
+
+                </button>
+
+              );
+
+
+            })
+
+          }
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+          <button
+
+            onClick={finishQuestion}
+
+
+            className="
+            mt-8
+            rounded-full
+            bg-black
+            text-white
+            px-12
+            py-4
+            text-xl
             font-black
             "
 
           >
 
-            CORRECT ANSWER
+            FINISH QUESTION
 
-          </h3>
-
-
-
-          <p
-
-            className="
-            text-3xl
-            font-bold
-            mt-3
-            "
-
-          >
-
-            Answer appears here.
-
-          </p>
-
-
-        </div>
-
-
-
-
-
-
-
-
-
-        <div
-
-          className="
-          grid
-          md:grid-cols-2
-          gap-5
-          mt-8
-          "
-
-        >
-
-
-
-        {
-          houseData.map((house)=>{
-
-
-            const done =
-            awarded.includes(house.id);
-
-
-
-            return (
-
-              <button
-
-
-                key={house.id}
-
-
-                disabled={done}
-
-
-
-                onClick={()=>givePoints(house.id)}
-
-
-
-                className="
-                rounded-3xl
-                p-6
-                text-xl
-                font-black
-                transition
-                hover:scale-105
-                "
-
-
-
-                style={{
-
-                  backgroundColor:
-                  house.color,
-
-
-                  opacity:
-                  done
-                  ?
-                  0.5
-                  :
-                  1,
-
-
-                  color:
-                  house.id==="red"
-                  ?
-                  "white"
-                  :
-                  "black"
-
-                }}
-
-
-
-              >
-
-
-              {
-                done
-
-                ?
-
-                "✅ AWARDED"
-
-                :
-
-                `${house.name} +10`
-
-              }
-
-
-
-              </button>
-
-
-            );
-
-
-          })
-
-        }
-
-
-
-        </div>
-
-
-
-
-
-
-
-
-
-        <button
-
-
-          onClick={finishQuestion}
-
-
-
-          className="
-          mt-8
-          rounded-full
-          bg-black
-          text-white
-          px-12
-          py-4
-          text-xl
-          font-black
-          "
-
-        >
-
-          FINISH QUESTION
-
-        </button>
-
+          </button>
 
 
 
@@ -403,8 +397,6 @@ export default function QuestionModal({
 
     </section>
 
-
   );
-
 
 }
