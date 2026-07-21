@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "subject": "Science",
+    "type": "text",
+    "question": "What is the first step of the scientific learning process?",
+    "answer": "Observation",
+    "points": 10
+  },
+
+  {
+    "id": 2,
+    "subject": "General Knowledge",
+    "type": "text",
+    "question": "नेपालमा हाल कति वटा गाउँपालिका छन्?",
+    "answer": "460",
+    "points": 10
+  },
+
+  {
+    "id": 3,
+    "subject": "Sports",
+    "type": "text",
+    "question": "Who is Nepal's national cricket team captain?",
+    "answer": "Sandeep Lamichhane",
+    "points": 10
+  },
+
+  {
+    "id": 4,
+    "subject": "Mathematics",
+    "type": "text",
+    "question": "Find the HCF of 18 and 36.",
+    "answer": "18",
+    "points": 10
+  },
+
+  {
+    "id": 5,
+    "subject": "Mathematics",
+    "type": "text",
+    "question": "What is the formula for finding the area of a rectangle?",
+    "answer": "Length × Breadth",
+    "points": 10
+  },
+
+  {
+    "id": 6,
+    "subject": "Mathematics",
+    "type": "image",
+    "image": "/questions/q06.png",
+    "question": "Find the area of the figure shown.",
+    "answer": "48 cm²",
+    "points": 10
+  }
+]
