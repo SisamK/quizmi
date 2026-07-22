@@ -53,23 +53,31 @@ export default function RootLayout({
         <Navbar />
 
         <main
-          className="
-            relative
-            z-10
-            w-full
-            max-w-7xl
-            mx-auto
-            px-4
-            sm:px-6
-            md:px-8
-            lg:px-12
-            py-6
-            sm:py-8
-            lg:py-12
-          "
-        >
-          {children}
-        </main>
+  className="
+    relative
+    z-10
+    w-full
+    h-[calc(100vh-140px)]
+    max-h-[2160px]
+    overflow-hidden
+    flex
+    items-center
+    justify-center
+    px-6
+    py-4
+  "
+>
+  <div
+    className="
+      w-full
+      h-full
+      max-w-[2200px]
+      mx-auto
+    "
+  >
+    {children}
+  </div>
+</main>
 
         <Footer />
       </body>
