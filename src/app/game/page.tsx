@@ -913,7 +913,7 @@ alt="question"
 className="
 mx-auto
 mt-5
-max-h-[260px]
+max-h-[140px]
 rounded-2xl
 object-contain
 "
@@ -1145,7 +1145,6 @@ px-8
 py-4
 font-black
 "
-
 >
 
 FINISH QUESTION
