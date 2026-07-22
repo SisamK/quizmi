@@ -549,16 +549,15 @@ if (page === "shuffle") {
 return (
 
 <main
-className="
-min-h-full
-w-full
-grid
-grid-cols-1
-lg:grid-cols-[320px_1fr]
-gap-5
-p-5
-overflow-y-auto
-"
+  className="
+  h-screen
+  w-full
+  grid
+  grid-cols-[220px_1fr]
+  gap-3
+  p-3
+  overflow-hidden
+  "
 >
 
 
@@ -566,22 +565,24 @@ overflow-y-auto
 
 <section
 className="
-rounded-[36px]
+rounded-3xl
 bg-white/30
 backdrop-blur-3xl
 border
 border-white/50
-p-5
+p-3
 shadow-xl
+h-full
+overflow-hidden
 "
 >
 
 <h2
 className="
-text-3xl
+text-1xl
 font-black
 text-center
-mb-5
+mb-2
 "
 >
 QUESTIONS
@@ -592,7 +593,7 @@ QUESTIONS
 className="
 grid
 grid-cols-4
-gap-3
+gap-1.5
 "
 >
 
@@ -622,10 +623,9 @@ setSelectedQuestion(number)
 
 className={`
 aspect-square
-rounded-2xl
+rounded-lg
 font-black
-text-xl
-
+text-sm
 ${
 used
 ?
@@ -660,9 +660,11 @@ used
 
 <section
 className="
+h-full
 grid
-grid-rows-[150px_auto_auto]
-gap-5
+grid-rows-[100px_130px_1fr]
+gap-3
+overflow-hidden
 "
 >
 
@@ -687,7 +689,7 @@ shadow-xl
 
 <h2
 className="
-text-3xl
+text-xl
 font-black
 "
 >
@@ -697,7 +699,7 @@ font-black
 
 <p
 className="
-text-5xl
+text-3xl
 font-black
 mt-3
 "
@@ -788,7 +790,7 @@ backgroundColor:house.color
 </p>
 
 
-<p className="text-5xl font-black">
+<p className="text-3xl font-black">
 
 {scores[house.id]}
 
@@ -831,7 +833,7 @@ bg-white/30
 backdrop-blur-3xl
 border
 border-white/50
-p-8
+p-4
 shadow-xl
 "
 
@@ -844,7 +846,7 @@ selectedQuestion === null ?
 
 <h2
 className="
-text-5xl
+text-3xl
 font-black
 text-center
 mt-20
@@ -861,7 +863,7 @@ SELECT QUESTION
 
 <h2
 className="
-text-4xl
+text-2xl
 font-black
 "
 >
@@ -1018,8 +1020,8 @@ mt-6
 rounded-full
 bg-orange-600
 text-white
-px-12
-py-4
+px-8
+py-2
 font-black
 "
 
@@ -1140,7 +1142,7 @@ mt-6
 rounded-full
 bg-black
 text-white
-px-14
+px-8
 py-4
 font-black
 "
