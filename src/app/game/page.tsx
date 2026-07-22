@@ -20,7 +20,7 @@ const houseData = [
   },
   {
     id: "green",
-    name: "Green House",
+    name: "#37fd12",
     color: "#37fd12",
   },
   {
@@ -35,68 +35,67 @@ const houseData = [
 export default function GamePage() {
 
 
-  const [page, setPage] =
+  const [page,setPage] =
     useState<
       "rules" | "shuffle" | "game"
     >("rules");
 
 
-  const [shuffled, setShuffled] =
+  const [shuffled,setShuffled] =
     useState(false);
 
 
-  const [clockwiseOrder, setClockwiseOrder] =
+  const [clockwiseOrder,setClockwiseOrder] =
     useState<typeof houseData[number][]>([]);
 
 
-  const [antiClockwiseOrder, setAntiClockwiseOrder] =
+  const [antiClockwiseOrder,setAntiClockwiseOrder] =
     useState<typeof houseData[number][]>([]);
 
 
-  const [currentTurn, setCurrentTurn] =
+  const [currentTurn,setCurrentTurn] =
     useState(0);
 
 
-  const [scores, setScores] =
+  const [scores,setScores] =
     useState({
-      red: 0,
-      blue: 0,
-      green: 0,
-      yellow: 0,
+      red:0,
+      blue:0,
+      green:0,
+      yellow:0,
     });
 
 
-  const [selectedQuestion, setSelectedQuestion] =
-    useState<number | null>(null);
+  const [selectedQuestion,setSelectedQuestion] =
+    useState<number|null>(null);
 
 
-  const [usedQuestions, setUsedQuestions] =
+  const [usedQuestions,setUsedQuestions] =
     useState<number[]>([]);
 
 
-  const [answerRevealed, setAnswerRevealed] =
+  const [answerRevealed,setAnswerRevealed] =
     useState(false);
 
 
-  const [awarded, setAwarded] =
+  const [awarded,setAwarded] =
     useState<string[]>([]);
 
 
 
-  function shuffleHouses() {
+  function shuffleHouses(){
 
-    if (shuffled) return;
+    if(shuffled) return;
 
 
     const order =
       [...houseData]
       .sort(
-        () => Math.random() - 0.5
+        ()=>Math.random()-0.5
       );
 
 
     setClockwiseOrder(order);
-
 
     setAntiClockwiseOrder(
       [...order].reverse()
@@ -109,11 +108,13 @@ export default function GamePage() {
 
 
 
-  function startGame() {
+
+  function startGame(){
 
     setPage("game");
 
   }
+
 
 
 
@@ -123,13 +124,15 @@ export default function GamePage() {
 
   const currentQuestion =
     questions.find(
-      (q) =>
-        q.id === selectedQuestion
+      q =>
+      q.id === selectedQuestion
     );
 
 
 
-  function nextTurn() {
+
+
+  function nextTurn(){
 
     setCurrentTurn(
       prev =>
@@ -140,19 +143,19 @@ export default function GamePage() {
 
 
 
+
   function givePoints(
-    houseId: string
-  ) {
+    houseId:string
+  ){
 
-
-    if (
+    if(
       awarded.includes(houseId)
     )
-      return;
+    return;
 
 
 
-    setScores(prev => ({
+    setScores(prev=>({
 
       ...prev,
 
@@ -164,45 +167,35 @@ export default function GamePage() {
     }));
 
 
-    setAwarded(prev => [
-
+    setAwarded(prev=>[
       ...prev,
-
       houseId
-
     ]);
 
   }
 
 
 
-  function finishQuestion() {
 
 
-    if (
-      selectedQuestion === null
-    )
-      return;
+  function finishQuestion(){
+
+    if(selectedQuestion===null)
+    return;
 
 
 
-    setUsedQuestions(prev => [
-
+    setUsedQuestions(prev=>[
       ...prev,
-
       selectedQuestion
-
     ]);
 
 
     setSelectedQuestion(null);
 
-
     setAnswerRevealed(false);
 
-
     setAwarded([]);
-
 
     nextTurn();
 
@@ -212,10 +205,12 @@ export default function GamePage() {
 
 
 
+
 // ================= RULES =================
 
 
-if (page === "rules") {
+
+if(page==="rules"){
 
 
 return (
@@ -229,23 +224,22 @@ justify-center
 "
 >
 
-
 <div
 className="
-max-w-xl
-rounded-[32px]
+rounded-[40px]
 bg-white/40
 backdrop-blur-3xl
-p-8
+p-12
 text-center
 shadow-xl
+max-w-xl
 "
 >
 
 
 <h1
 className="
-text-4xl
+text-5xl
 font-black
 "
 >
@@ -258,31 +252,27 @@ font-black
 
 <div
 className="
-mt-5
-space-y-2
-text-lg
+mt-8
+space-y-3
+text-xl
 font-bold
 "
 >
-
 
 <p>
 ✅ Correct answer = 10 points
 </p>
 
-
 <p>
-✅ House order decides question turns
+✅ House order decides turns
 </p>
-
 
 <p>
 ✅ Highest score wins
 </p>
 
-
 <p>
-✅ One shuffle for the whole game
+✅ Shuffle happens once
 </p>
 
 
@@ -290,20 +280,19 @@ font-bold
 
 
 
-
 <button
 
-onClick={() =>
+onClick={()=>
 setPage("shuffle")
 }
 
 className="
-mt-7
+mt-10
 rounded-full
 bg-black
 text-white
-px-10
-py-3
+px-12
+py-4
 font-black
 "
 
@@ -317,7 +306,6 @@ CONTINUE
 
 </div>
 
-
 </main>
 
 );
@@ -329,11 +317,12 @@ CONTINUE
 
 
 
+
 // ================= SHUFFLE =================
 
 
 
-if (page === "shuffle") {
+if(page==="shuffle"){
 
 
 return (
@@ -349,21 +338,22 @@ justify-center
 
 
 <div
+
 className="
-max-w-3xl
-rounded-[32px]
+rounded-[40px]
 bg-white/40
 backdrop-blur-3xl
-p-8
+p-10
 text-center
 shadow-xl
 "
+
 >
 
 
 <h1
 className="
-text-4xl
+text-5xl
 font-black
 "
 >
@@ -371,7 +361,6 @@ font-black
 🎲 SHUFFLE HOUSE ORDER
 
 </h1>
-
 
 
 
@@ -383,12 +372,12 @@ font-black
 onClick={shuffleHouses}
 
 className="
-mt-8
+mt-10
 rounded-full
 bg-black
 text-white
-px-10
-py-3
+px-12
+py-4
 font-black
 "
 
@@ -408,26 +397,22 @@ shuffled && (
 
 <div
 className="
-mt-6
+mt-8
 grid
 grid-cols-2
-gap-6
+gap-8
 "
 >
 
 
 <div>
 
-<h2
-className="
-text-2xl
+<h2 className="
+text-3xl
 font-black
-mb-3
-"
->
-
+mb-4
+">
 ↻ CLOCKWISE
-
 </h2>
 
 
@@ -435,20 +420,19 @@ mb-3
 clockwiseOrder.map(
 (house,index)=>(
 
-
 <div
-
 key={house.id}
 
 className="
-rounded-xl
-p-3
-mb-2
+rounded-2xl
+p-4
+mb-3
 font-black
+text-xl
 "
 
 style={{
-backgroundColor: house.color,
+backgroundColor:house.color,
 color:
 house.id==="red"
 ?
@@ -463,8 +447,8 @@ house.id==="red"
 
 </div>
 
-
 )
+
 )
 
 }
@@ -473,20 +457,14 @@ house.id==="red"
 
 
 
-
-
 <div>
 
-<h2
-className="
-text-2xl
+<h2 className="
+text-3xl
 font-black
-mb-3
-"
->
-
+mb-4
+">
 ↺ ANTI-CLOCKWISE
-
 </h2>
 
 
@@ -494,20 +472,19 @@ mb-3
 antiClockwiseOrder.map(
 (house,index)=>(
 
-
 <div
-
 key={house.id}
 
 className="
-rounded-xl
-p-3
-mb-2
+rounded-2xl
+p-4
+mb-3
 font-black
+text-xl
 "
 
 style={{
-backgroundColor: house.color,
+backgroundColor:house.color,
 color:
 house.id==="red"
 ?
@@ -522,8 +499,8 @@ house.id==="red"
 
 </div>
 
-
 )
+
 )
 
 }
@@ -541,9 +518,10 @@ col-span-2
 rounded-full
 bg-green-600
 text-white
-px-12
-py-4
+px-14
+py-5
 font-black
+text-xl
 "
 
 >
@@ -553,12 +531,12 @@ START GAME 🚀
 </button>
 
 
-
 </div>
 
 )
 
 }
+
 
 
 </div>
@@ -569,36 +547,34 @@ START GAME 🚀
 );
 
 }
-  
-// ================= GAME BOARD =================
 
 
-return (
+// ================= GAME BOARD =================return (
 
 <main
 className="
 h-full
 grid
-grid-cols-[360px_1fr]
+grid-cols-[320px_1fr]
 gap-5
-p-4
+p-5
 overflow-hidden
 "
 >
 
 
-{/* QUESTION SELECTOR */}
-
+{/* QUESTION NUMBER PANEL */}
 
 <section
 
 className="
-rounded-[32px]
+rounded-[36px]
+bg-white/30
+backdrop-blur-3xl
 border
 border-white/50
-bg-white/25
-backdrop-blur-3xl
 p-5
+shadow-xl
 overflow-hidden
 "
 
@@ -606,12 +582,14 @@ overflow-hidden
 
 
 <h2
+
 className="
-text-2xl
+text-3xl
 font-black
-mb-4
 text-center
+mb-5
 "
+
 >
 
 QUESTIONS
@@ -621,23 +599,24 @@ QUESTIONS
 
 
 <div
+
 className="
 grid
-grid-cols-5
-gap-2
+grid-cols-4
+gap-3
 "
+
 >
 
 
 {
 Array.from({
-length: TOTAL_QUESTIONS
+length:TOTAL_QUESTIONS
 })
 .map((_,i)=>{
 
 
-const number = i + 1;
-
+const number=i+1;
 
 const used =
 usedQuestions.includes(number);
@@ -652,22 +631,23 @@ key={number}
 
 disabled={used}
 
-onClick={() =>
+onClick={()=>
 setSelectedQuestion(number)
 }
 
 className={`
 aspect-square
-rounded-xl
+rounded-2xl
 font-black
-text-lg
+text-xl
+transition
 
 ${
 used
 ?
 "bg-gray-400 text-white"
 :
-"bg-white hover:bg-orange-200"
+"bg-white hover:bg-orange-200 hover:scale-105"
 }
 
 `}
@@ -695,14 +675,15 @@ used
 
 
 
-{/* RIGHT DASHBOARD */}
+
+{/* MAIN BENTO AREA */}
 
 
 <section
 
 className="
 grid
-grid-rows-[auto_auto_1fr]
+grid-rows-[150px_170px_1fr]
 gap-5
 overflow-hidden
 "
@@ -711,28 +692,33 @@ overflow-hidden
 
 
 
-{/* CURRENT TURN */}
 
+{/* CURRENT TURN */}
 
 
 <div
 
 className="
-rounded-[32px]
+rounded-[36px]
 bg-black
 text-white
-p-5
-text-center
+flex
+items-center
+justify-center
+flex-col
+shadow-xl
 "
 
 >
 
 
 <h2
+
 className="
-text-2xl
+text-3xl
 font-black
 "
+
 >
 
 🎯 CURRENT TURN
@@ -742,26 +728,16 @@ font-black
 
 
 <p
+
 className="
-text-3xl
+text-5xl
 font-black
-mt-2
+mt-3
 "
+
 >
 
-{currentHouse?.name}
-
-</p>
-
-
-<p
-className="
-text-lg
-font-bold
-"
->
-
-Choose a question number
+{currentHouse?.name ?? "Shuffle First"}
 
 </p>
 
@@ -774,19 +750,20 @@ Choose a question number
 
 
 
-{/* SCOREBOARD */}
+{/* SCORE BOARD */}
 
 
 
 <div
 
 className="
-rounded-[32px]
+rounded-[36px]
+bg-white/30
+backdrop-blur-3xl
 border
 border-white/50
-bg-white/25
-backdrop-blur-3xl
 p-5
+shadow-xl
 "
 
 >
@@ -809,13 +786,12 @@ LIVE SCOREBOARD
 
 
 
-
 <div
 
 className="
 grid
 grid-cols-4
-gap-3
+gap-4
 "
 
 >
@@ -823,7 +799,7 @@ gap-3
 
 {
 houseData.map(
-(house)=>(
+house=>(
 
 
 <div
@@ -831,18 +807,18 @@ houseData.map(
 key={house.id}
 
 className="
-rounded-2xl
-bg-white/35
-border
-border-white/50
+rounded-3xl
+bg-white/50
 p-3
 text-center
+border
+border-white
 "
 
 style={{
 
 boxShadow:
-`0 0 25px ${house.color}70`
+`0 0 30px ${house.color}80`
 
 }}
 
@@ -867,32 +843,30 @@ house.color
 >
 
 
-
 </div>
-
-
-
-<h3
-
-className="
-font-black
-text-sm
-"
-
->
-
-{house.name}
-
-</h3>
 
 
 
 <p
 
 className="
-text-4xl
 font-black
-mt-2
+text-lg
+"
+
+>
+
+{house.name}
+
+</p>
+
+
+
+<p
+
+className="
+text-5xl
+font-black
 "
 
 >
@@ -902,18 +876,20 @@ mt-2
 </p>
 
 
-<p
+
+<span
 
 className="
-text-xs
 font-bold
+text-sm
 "
 
 >
 
 POINTS
 
-</p>
+</span>
+
 
 
 </div>
@@ -939,39 +915,37 @@ POINTS
 
 
 
-{/* QUESTION AREA */}
-
+{/* QUESTION DISPLAY */}
 
 
 <div
 
 className="
-rounded-[32px]
+rounded-[36px]
+bg-white/30
+backdrop-blur-3xl
 border
 border-white/50
-bg-white/25
-backdrop-blur-3xl
-p-6
+p-8
+shadow-xl
 overflow-hidden
 "
 
 >
 
 
-
 {
-selectedQuestion === null
 
-?
+selectedQuestion===null ?
 
 
 <h2
 
 className="
-text-3xl
+text-5xl
 font-black
 text-center
-mt-10
+mt-20
 "
 
 >
@@ -990,7 +964,7 @@ SELECT QUESTION
 <h2
 
 className="
-text-3xl
+text-4xl
 font-black
 "
 
@@ -1007,11 +981,10 @@ QUESTION {selectedQuestion}
 <div
 
 className="
-mt-4
+mt-5
 bg-white
-rounded-2xl
-p-5
-overflow-hidden
+rounded-3xl
+p-6
 "
 
 >
@@ -1020,7 +993,7 @@ overflow-hidden
 <p
 
 className="
-text-xl
+text-3xl
 font-bold
 "
 
@@ -1035,30 +1008,25 @@ font-bold
 
 
 {
-currentQuestion?.type === "image"
+currentQuestion?.type==="image"
 &&
 currentQuestion.image
 &&
-
-(
 
 <img
 
 src={currentQuestion.image}
 
-alt="Question"
+alt="question"
 
 className="
 mx-auto
 mt-5
-max-h-[240px]
-rounded-xl
-object-contain
+max-h-[260px]
+rounded-2xl
 "
 
 />
-
-)
 
 }
 
@@ -1068,19 +1036,17 @@ object-contain
 
 
 {
-currentQuestion?.type === "three-images"
+currentQuestion?.type==="three-images"
 &&
 currentQuestion.images
 &&
-
-(
 
 <div
 
 className="
 grid
 grid-cols-3
-gap-3
+gap-5
 mt-5
 "
 
@@ -1089,8 +1055,7 @@ mt-5
 
 {
 (["A","B","C"] as const)
-.map(
-(key)=>(
+.map(key=>(
 
 
 <div
@@ -1098,10 +1063,9 @@ mt-5
 key={key}
 
 className="
-rounded-xl
+rounded-2xl
 border
-p-2
-text-center
+p-3
 "
 
 >
@@ -1110,16 +1074,16 @@ text-center
 <img
 
 src={
-currentQuestion.images[key]
+currentQuestion.images![key]
 }
 
 alt={key}
 
 className="
-h-32
+rounded-xl
+h-40
 w-full
 object-cover
-rounded-lg
 "
 
 />
@@ -1128,7 +1092,9 @@ rounded-lg
 <p
 
 className="
+text-center
 font-black
+text-2xl
 "
 
 >
@@ -1141,26 +1107,18 @@ font-black
 </div>
 
 
-)
-
-)
+))
 
 }
 
 
 </div>
 
-)
-
 }
 
 
 
 </div>
-
-
-
-
 
 
 
@@ -1172,18 +1130,19 @@ font-black
 
 <button
 
-onClick={() =>
+onClick={()=>
 setAnswerRevealed(true)
 }
 
 className="
-mt-5
+mt-6
 rounded-full
 bg-orange-600
 text-white
-px-8
-py-3
+px-12
+py-4
 font-black
+text-xl
 "
 
 >
@@ -1192,12 +1151,7 @@ REVEAL ANSWER
 
 </button>
 
-
 }
-
-
-
-
 
 
 
@@ -1207,26 +1161,33 @@ REVEAL ANSWER
 answerRevealed &&
 
 
-<>
+<div
+
+className="
+mt-5
+"
+
+>
 
 
 <div
 
 className="
-mt-5
-rounded-2xl
+rounded-3xl
 bg-green-100
-p-4
+p-6
 "
 
 >
 
 
 <h3
+
 className="
+text-2xl
 font-black
-text-xl
 "
+
 >
 
 CORRECT ANSWER
@@ -1237,7 +1198,7 @@ CORRECT ANSWER
 <p
 
 className="
-text-2xl
+text-4xl
 font-black
 "
 
@@ -1252,15 +1213,12 @@ font-black
 
 
 
-
-
-
 <div
 
 className="
 grid
 grid-cols-4
-gap-3
+gap-4
 mt-5
 "
 
@@ -1269,7 +1227,7 @@ mt-5
 
 {
 houseData.map(
-(house)=>{
+house=>{
 
 
 const done =
@@ -1285,15 +1243,15 @@ key={house.id}
 
 disabled={done}
 
-onClick={() =>
+onClick={()=>
 givePoints(house.id)
 }
 
 className="
-rounded-xl
-p-3
+rounded-2xl
+p-4
 font-black
-text-sm
+text-lg
 "
 
 style={{
@@ -1315,7 +1273,7 @@ done
 {
 done
 ?
-"✅"
+"✅ AWARDED"
 :
 `${house.name} +10`
 }
@@ -1324,7 +1282,6 @@ done
 
 
 )
-
 
 }
 
@@ -1339,19 +1296,17 @@ done
 
 
 
-
-
 <button
 
 onClick={finishQuestion}
 
 className="
-mt-5
+mt-6
 rounded-full
 bg-black
 text-white
-px-10
-py-3
+px-14
+py-4
 font-black
 "
 
@@ -1363,7 +1318,8 @@ FINISH QUESTION
 
 
 
-</>
+</div>
+
 
 }
 
@@ -1371,7 +1327,9 @@ FINISH QUESTION
 
 </>
 
+
 }
+
 
 
 </div>
@@ -1380,8 +1338,7 @@ FINISH QUESTION
 
 </section>
 
-</main>
 
-);
+</main>
 
 }
