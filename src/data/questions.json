@@ -12,8 +12,8 @@
     "id": 2,
     "subject": "General Knowledge",
     "type": "text",
-    "question": "नेपालमा हाल कति वटा गाउँपालिका छन्?",
-    "answer": "460",
+    "question": "नेपालमा हाल कति वटा नगरपालिका छन्?",
+    "answer": "293",
     "points": 10
   },
 
@@ -21,8 +21,8 @@
     "id": 3,
     "subject": "Sports",
     "type": "text",
-    "question": "Who is Nepal's national cricket team captain?",
-    "answer": "Sandeep Lamichhane",
+    "question": "Who is the captain of Nepal Men's National Cricket Team?",
+    "answer": "Rohit Paudel",
     "points": 10
   },
 
@@ -39,7 +39,7 @@
     "id": 5,
     "subject": "Mathematics",
     "type": "text",
-    "question": "What is the formula for finding the area of a rectangle?",
+    "question": "What is the formula for the area of a rectangle?",
     "answer": "Length × Breadth",
     "points": 10
   },
@@ -51,6 +51,67 @@
     "image": "/questions/q06.png",
     "question": "Find the area of the figure shown.",
     "answer": "48 cm²",
+    "points": 10
+  },
+
+  {
+    "id": 7,
+    "subject": "Sports",
+    "type": "image",
+    "image": "/questions/q07.png",
+    "question": "Who is the Nepali footballer shown in this picture?",
+    "answer": "Niraj Chamjong",
+    "points": 10
+  },
+
+  {
+    "id": 8,
+    "subject": "Sports",
+    "type": "image",
+    "image": "/questions/q08.png",
+    "question": "Who is the famous Norwegian footballer shown in this picture?",
+    "answer": "Erling Haaland",
+    "points": 10
+  },
+
+  {
+    "id": 9,
+    "subject": "Mathematics",
+    "type": "text",
+    "question": "Calculate: (-6) + 3 - 8 + 15",
+    "answer": "4",
+    "points": 10
+  },
+
+  {
+    "id": 10,
+    "subject": "Mathematics",
+    "type": "text",
+    "question": "What is the formula for (a+b)²?",
+    "answer": "a² + 2ab + b²",
+    "points": 10
+  },
+
+  {
+    "id": 11,
+    "subject": "General Knowledge",
+    "type": "three-images",
+    "question": "Who is the current Education Minister of Nepal?",
+    "images": {
+      "A": "/questions/q11a.png",
+      "B": "/questions/q11b.png",
+      "C": "/questions/q11c.png"
+    },
+    "answer": "B",
+    "points": 10
+  },
+
+  {
+    "id": 12,
+    "subject": "General Knowledge",
+    "type": "text",
+    "question": "नेपालको राष्ट्रिय गान कसले रचना गरेका हुन्?",
+    "answer": "व्याकुल माइला (प्रदीप कुमार राई)",
     "points": 10
   }
 ]
