@@ -23,20 +23,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`
-          ${nunito.className}
-          h-screen
-          overflow-hidden
-          bg-gradient-to-br
-          from-pink-100
-          via-sky-50
-          to-teal-100
-        `}
-        style={{
-          color: "#B03060",
-        }}
-      >
+     <body
+  className={`
+    ${nunito.className}
+    min-h-screen
+    bg-gradient-to-br
+    from-pink-100
+    via-sky-50
+    to-teal-100
+  `}
+  style={{
+    color: "#B03060",
+  }}
+>
 
         {/* Background blobs */}
 
