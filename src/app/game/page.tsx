@@ -553,12 +553,11 @@ START GAME 🚀
 
 <main
 className="
-h-full
+min-h-full
 grid
 grid-cols-[320px_1fr]
 gap-5
 p-5
-overflow-hidden
 "
 >
 
@@ -680,14 +679,11 @@ used
 
 
 <section
-
 className="
 grid
-grid-rows-[150px_170px_1fr]
+grid-rows-[150px_170px_auto]
 gap-5
-overflow-hidden
 "
-
 >
 
 
@@ -928,7 +924,6 @@ border
 border-white/50
 p-8
 shadow-xl
-overflow-hidden
 "
 
 >
