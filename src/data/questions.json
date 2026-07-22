@@ -73,9 +73,9 @@
     "images": {
       "A": "/q11a.png",
       "B": "/q11b.png",
-      "C": /q11c.png"
+      "C": "/q11c.png"
     },
-    "answer": "B",
+    "answer": "C",
     "points": 10
   },
   {
@@ -236,7 +236,7 @@
     "type": "image",
     "image": "/q32.png",
     "question": "Who is this player?",
-    "answer": "",
+    "answer": "Rohit Kumar Paudel",
     "points": 10
   },
   {
