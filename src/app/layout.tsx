@@ -26,60 +26,95 @@ export default function RootLayout({
       <body
         className={`
           ${nunito.className}
-          min-h-screen
-          text-black
+          h-screen
+          overflow-hidden
           bg-gradient-to-br
           from-pink-100
           via-sky-50
           to-teal-100
-          overflow-x-hidden
         `}
-         style={{
-    color: "#B03060", // Dark Pink
-  }}
+        style={{
+          color: "#B03060",
+        }}
       >
-        {/* Floating background blobs */}
+
+        {/* Background blobs */}
 
         <div className="fixed inset-0 -z-10 overflow-hidden">
-          <div className="absolute -top-32 -left-24 h-96 w-96 rounded-full bg-pink-300/25 blur-3xl animate-pulse" />
 
-          <div className="absolute top-40 right-10 h-80 w-80 rounded-full bg-cyan-300/20 blur-3xl animate-pulse" />
+          <div className="
+            absolute
+            -top-32
+            -left-24
+            h-96
+            w-96
+            rounded-full
+            bg-pink-300/25
+            blur-3xl
+            animate-pulse
+          "/>
 
-          <div className="absolute bottom-10 left-1/3 h-72 w-72 rounded-full bg-white/40 blur-3xl" />
+          <div className="
+            absolute
+            top-40
+            right-10
+            h-80
+            w-80
+            rounded-full
+            bg-cyan-300/20
+            blur-3xl
+            animate-pulse
+          "/>
 
-          <div className="absolute bottom-24 right-20 h-60 w-60 rounded-full bg-teal-200/25 blur-3xl animate-pulse" />
+          <div className="
+            absolute
+            bottom-10
+            left-1/3
+            h-72
+            w-72
+            rounded-full
+            bg-white/40
+            blur-3xl
+          "/>
+
         </div>
 
-        <Navbar />
 
-        <main
-  className="
-    relative
-    z-10
-    w-full
-    h-[calc(100vh-140px)]
-    max-h-[2160px]
-    overflow-hidden
-    flex
-    items-center
-    justify-center
-    px-6
-    py-4
-  "
->
-  <div
-    className="
-      w-full
-      h-full
-      max-w-[2200px]
-      mx-auto
-    "
-  >
-    {children}
-  </div>
-</main>
+        <div className="h-full flex flex-col">
 
-        <Footer />
+          <Navbar />
+
+
+          <main
+            className="
+              flex-1
+              overflow-hidden
+              flex
+              items-center
+              justify-center
+              px-6
+              py-4
+            "
+          >
+
+            <div
+              className="
+                w-full
+                h-full
+                max-w-[2200px]
+                mx-auto
+              "
+            >
+              {children}
+            </div>
+
+          </main>
+
+
+          <Footer />
+
+        </div>
+
       </body>
     </html>
   );
