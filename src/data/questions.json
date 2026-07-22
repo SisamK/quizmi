@@ -7,55 +7,32 @@
     "answer": "Observation",
     "points": 10
   },
-
   {
     "id": 2,
-    "subject": "General Knowledge",
-    "type": "text",
-    "question": "नेपालमा हाल कति वटा नगरपालिका छन्?",
-    "answer": "293",
-    "points": 10
-  },
-
-  {
-    "id": 3,
     "subject": "Sports",
     "type": "text",
     "question": "Who is the captain of Nepal Men's National Cricket Team?",
     "answer": "Rohit Paudel",
     "points": 10
   },
-
   {
-    "id": 4,
+    "id": 3,
     "subject": "Mathematics",
     "type": "text",
     "question": "Find the HCF of 18 and 36.",
     "answer": "18",
     "points": 10
   },
-
   {
-    "id": 5,
+    "id": 4,
     "subject": "Mathematics",
     "type": "text",
     "question": "What is the formula for the area of a rectangle?",
     "answer": "Length × Breadth",
     "points": 10
   },
-
   {
-    "id": 6,
-    "subject": "Mathematics",
-    "type": "image",
-    "image": "/questions/q06.png",
-    "question": "Find the area of the figure shown.",
-    "answer": "48 cm²",
-    "points": 10
-  },
-
-  {
-    "id": 7,
+    "id": 5,
     "subject": "Sports",
     "type": "image",
     "image": "/questions/q07.png",
@@ -63,9 +40,8 @@
     "answer": "Niraj Chamjong",
     "points": 10
   },
-
   {
-    "id": 8,
+    "id": 6,
     "subject": "Sports",
     "type": "image",
     "image": "/questions/q08.png",
@@ -73,27 +49,24 @@
     "answer": "Erling Haaland",
     "points": 10
   },
-
   {
-    "id": 9,
+    "id": 7,
     "subject": "Mathematics",
     "type": "text",
     "question": "Calculate: (-6) + 3 - 8 + 15",
     "answer": "4",
     "points": 10
   },
-
   {
-    "id": 10,
+    "id": 8,
     "subject": "Mathematics",
     "type": "text",
     "question": "What is the formula for (a+b)²?",
     "answer": "a² + 2ab + b²",
     "points": 10
   },
-
   {
-    "id": 11,
+    "id": 9,
     "subject": "General Knowledge",
     "type": "three-images",
     "question": "Who is the current Education Minister of Nepal?",
@@ -105,13 +78,349 @@
     "answer": "B",
     "points": 10
   },
-
+  {
+    "id": 10,
+    "subject": "Science",
+    "type": "text",
+    "question": "What is the SI unit of power?",
+    "answer": "Watt",
+    "points": 10
+  },
+  {
+    "id": 11,
+    "subject": "General Knowledge",
+    "type": "text",
+    "question": "संयुक्त राष्ट्रसंघको मानव अधिकार सम्बन्धी घोषणापत्रमा कति वटा अधिकार समेटिएका छन्?",
+    "answer": "30",
+    "points": 10
+  },
   {
     "id": 12,
     "subject": "General Knowledge",
     "type": "text",
-    "question": "नेपालको राष्ट्रिय गान कसले रचना गरेका हुन्?",
-    "answer": "व्याकुल माइला (प्रदीप कुमार राई)",
+    "question": "जनगणना २०७८ अनुसार बागमती प्रदेशको जनसंख्या कति रहेको छ?",
+    "answer": "6116866",
+    "points": 10
+  },
+  {
+    "id": 13,
+    "subject": "Technology",
+    "type": "text",
+    "question": "What is the full form of STB?",
+    "answer": "Set Top Box",
+    "points": 10
+  },
+  {
+    "id": 14,
+    "subject": "English",
+    "type": "text",
+    "question": "What is written first while writing a formal letter?",
+    "answer": "Address",
+    "points": 10
+  },
+  {
+    "id": 15,
+    "subject": "Literature",
+    "type": "text",
+    "question": "When was T. S. Eliot born?",
+    "answer": "26 September 1888",
+    "points": 10
+  },
+  {
+    "id": 16,
+    "subject": "Mathematics",
+    "type": "text",
+    "question": "How many faces does a cube have?",
+    "answer": "6",
+    "points": 10
+  },
+  {
+    "id": 17,
+    "subject": "Mathematics",
+    "type": "text",
+    "question": "Simplify: 128 ÷ {40 − 6 × (7 − 2)} + 6",
+    "answer": "14",
+    "points": 10
+  },
+  {
+    "id": 18,
+    "subject": "General Knowledge",
+    "type": "text",
+    "question": "नेपालमा हाल जम्मा कति वटा गाउँपालिका छन्?",
+    "answer": "460",
+    "points": 10
+  },
+  {
+    "id": 19,
+    "subject": "Sports",
+    "type": "text",
+    "question": "Who won the FIFA World Cup 2026?",
+    "answer": "Spain",
+    "points": 10
+  },
+  {
+    "id": 20,
+    "subject": "Sports",
+    "type": "text",
+    "question": "Who won the Golden Boot in the FIFA World Cup 2026?",
+    "answer": "Kylian Mbappe",
+    "points": 10
+  },
+  {
+    "id": 21,
+    "subject": "Communication",
+    "type": "text",
+    "question": "Give one example of one-way communication.",
+    "answer": "Radio",
+    "points": 10
+  },
+  {
+    "id": 22,
+    "subject": "English",
+    "type": "text",
+    "question": "What is the replacing word for the underlined words in the sentence: 'Ram and Shyam are dancing'?",
+    "answer": "They",
+    "points": 10
+  },
+  {
+    "id": 23,
+    "subject": "General Knowledge",
+    "type": "text",
+    "question": "Which national park is famous for the one-horned rhinoceros?",
+    "answer": "Chitwan National Park",
+    "points": 10
+  },
+  {
+    "id": 24,
+    "subject": "Science",
+    "type": "text",
+    "question": "Which organ pumps blood throughout the human body?",
+    "answer": "Heart",
+    "points": 10
+  },
+  {
+    "id": 25,
+    "subject": "General Knowledge",
+    "type": "text",
+    "question": "Which festival is celebrated by flying kites in Nepal?",
+    "answer": "Dashain",
+    "points": 10
+  },
+  {
+    "id": 26,
+    "subject": "Culture",
+    "type": "text",
+    "question": "Which dance is popular among the Tharu community?",
+    "answer": "Sakhiya Dance",
+    "points": 10
+  },
+  {
+    "id": 27,
+    "subject": "Sports",
+    "type": "text",
+    "question": "Which Nepali cricketer is known as a famous national player?",
+    "answer": "Sandeep Lamichhane",
+    "points": 10
+  },
+  {
+    "id": 28,
+    "subject": "Civics",
+    "type": "text",
+    "question": "What type of government system does Nepal have?",
+    "answer": "Federal Democratic Republic",
+    "points": 10
+  },
+  {
+    "id": 29,
+    "subject": "Sports",
+    "type": "image",
+    "image": "/questions/q32.png",
+    "question": "Who is this player?",
+    "answer": "",
+    "points": 10
+  },
+  {
+    "id": 30,
+    "subject": "Sports",
+    "type": "text",
+    "question": "What is the national football governing body of Nepal called?",
+    "answer": "All Nepal Football Association (ANFA)",
+    "points": 10
+  },
+  {
+    "id": 31,
+    "subject": "Science",
+    "type": "text",
+    "question": "Which gas is used to put out fire?",
+    "answer": "Carbon Dioxide (CO2)",
+    "points": 10
+  },
+  {
+    "id": 32,
+    "subject": "Riddles",
+    "type": "text",
+    "question": "What is often returned but never borrowed?",
+    "answer": "Thanks",
+    "points": 10
+  },
+  {
+    "id": 33,
+    "subject": "Riddles",
+    "type": "text",
+    "question": "What can go through glass without breaking it?",
+    "answer": "Light",
+    "points": 10
+  },
+  {
+    "id": 34,
+    "subject": "Riddles",
+    "type": "text",
+    "question": "What has a mouth but never talks?",
+    "answer": "Cave",
+    "points": 10
+  },
+  {
+    "id": 35,
+    "subject": "Riddles",
+    "type": "text",
+    "question": "What has a neck but no head or body?",
+    "answer": "Bottle",
+    "points": 10
+  },
+  {
+    "id": 36,
+    "subject": "Riddles",
+    "type": "text",
+    "question": "What comes to everyone but is not invited?",
+    "answer": "Old Age",
+    "points": 10
+  },
+  {
+    "id": 37,
+    "subject": "Riddles",
+    "type": "text",
+    "question": "What grows without being planted?",
+    "answer": "Hair",
+    "points": 10
+  },
+  {
+    "id": 38,
+    "subject": "Riddles",
+    "type": "text",
+    "question": "What is the greatest contradiction?",
+    "answer": "Living to Die",
+    "points": 10
+  },
+  {
+    "id": 39,
+    "subject": "General Knowledge",
+    "type": "text",
+    "question": "सत्य बोल्नु के हो? धर्म कि कर्म?",
+    "answer": "धर्म",
+    "points": 10
+  },
+  {
+    "id": 40,
+    "subject": "Science",
+    "type": "text",
+    "question": "I pull objects toward the Earth and keep us on the ground. What am I?",
+    "answer": "Gravity",
+    "points": 10
+  },
+  {
+    "id": 41,
+    "subject": "Science",
+    "type": "text",
+    "question": "The boiling point of water is ____ °C.",
+    "answer": "100",
+    "points": 10
+  },
+  {
+    "id": 42,
+    "subject": "Science",
+    "type": "text",
+    "question": "What is the hardest natural substance on Earth?",
+    "answer": "Diamond",
+    "points": 10
+  },
+  {
+    "id": 43,
+    "subject": "English",
+    "type": "text",
+    "question": "What is the sentence structure of the Past Progressive Tense?",
+    "answer": "Subject + was/were + verb-ing",
+    "points": 10
+  },
+  {
+    "id": 44,
+    "subject": "Religion",
+    "type": "text",
+    "question": "Who is worshipped during Chhath Puja?",
+    "answer": "Chhathi Maiyya",
+    "points": 10
+  },
+  {
+    "id": 45,
+    "subject": "Technology",
+    "type": "text",
+    "question": "What should Nepal Telecom users dial to activate a new SIM card for the first time?",
+    "answer": "*1414#",
+    "points": 10
+  },
+  {
+    "id": 46,
+    "subject": "Riddles",
+    "type": "text",
+    "question": "खुट्टा छैन, हिँड्छ; मुख छैन, बोल्छ। के हो?",
+    "answer": "घडी",
+    "points": 10
+  },
+  {
+    "id": 47,
+    "subject": "Riddles",
+    "type": "text",
+    "question": "दुई दाजुभाइ सँगै हिँड्छन् तर कहिल्यै भेट्दैनन्। को हुन्?",
+    "answer": "आँखा",
+    "points": 10
+  },
+  {
+    "id": 48,
+    "subject": "Riddles",
+    "type": "text",
+    "question": "दाँत धेरै छन् तर खान सक्दैन। के हो?",
+    "answer": "काइँयो",
+    "points": 10
+  },
+  {
+    "id": 49,
+    "subject": "General Knowledge",
+    "type": "text",
+    "question": "How many districts are there in our province?",
+    "answer": "12",
+    "points": 10
+  },
+  {
+    "id": 50,
+    "subject": "General Knowledge",
+    "type": "text",
+    "question": "Name any five districts of our province.",
+    "answer": "Kathmandu, Lalitpur, Bhaktapur, Kavrepalanchok, Chitwan",
+    "points": 10
+  },
+  {
+    "id": 51,
+    "subject": "Mathematics",
+    "type": "text",
+    "question": "Factorize: x² + 5x + 6",
+    "answer": "(x + 2)(x + 3)",
+    "points": 10
+  },
+  {
+    "id": 52,
+    "subject": "Mathematics",
+    "type": "text",
+    "question": "How many prime numbers are less than 20?",
+    "answer": "8",
     "points": 10
   }
 ]
