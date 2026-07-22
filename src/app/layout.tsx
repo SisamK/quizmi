@@ -86,16 +86,15 @@ export default function RootLayout({
 
 
           <main
-            className="
-              flex-1
-              overflow-hidden
-              flex
-              items-center
-              justify-center
-              px-6
-              py-4
-            "
-          >
+  className="
+    relative
+    z-10
+    w-full
+    min-h-[calc(100vh-140px)]
+    px-6
+    py-4
+  "
+>
 
             <div
               className="
