@@ -23,11 +23,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+
       <body
         className={`
           ${nunito.className}
           min-h-screen
-          overflow-y-auto
+          overflow-x-hidden
           bg-gradient-to-br
           from-pink-100
           via-sky-50
@@ -38,7 +39,7 @@ export default function RootLayout({
         }}
       >
 
-        {/* Background blobs */}
+        {/* Background */}
 
         <div className="fixed inset-0 -z-10 overflow-hidden">
 
@@ -96,7 +97,6 @@ export default function RootLayout({
               relative
               z-10
               w-full
-              flex-1
               px-6
               py-4
             "
@@ -105,7 +105,6 @@ export default function RootLayout({
             <div
               className="
                 w-full
-                min-h-full
                 max-w-[2200px]
                 mx-auto
               "
@@ -124,6 +123,7 @@ export default function RootLayout({
 
 
       </body>
+
     </html>
   );
 }
