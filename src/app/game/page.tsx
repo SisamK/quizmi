@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { questions} from "@/src/data/questions";
 
 
 const TOTAL_QUESTIONS = 52;
@@ -143,6 +144,11 @@ export default function GamePage(){
 
   const currentHouse =
     clockwiseOrder[currentTurn];
+
+    const currentQuestion =
+  questions.find(
+    (q) => q.id === selectedQuestion
+  );
 
 
 
@@ -1245,14 +1251,84 @@ QUESTION {selectedQuestion}
 
 
 
-<div className="
-mt-8
-bg-white
-rounded-2xl
-p-8
-">
+<div
+  className="
+  mt-8
+  bg-white
+  rounded-2xl
+  p-8
+  space-y-6
+  "
+>
 
-Question content here
+  {/* Question */}
+
+  <p className="text-3xl font-bold">
+    {currentQuestion?.question}
+  </p>
+
+  {/* Single Image */}
+
+  {currentQuestion?.type === "image" &&
+    currentQuestion.image && (
+
+      <img
+        src={currentQuestion.image}
+        alt="Question"
+        className="mx-auto max-h-80 rounded-2xl"
+      />
+
+  )}
+
+  {/* Three Images */}
+
+  {currentQuestion?.type === "three-images" &&
+    currentQuestion.images && (() => {
+
+      const images = currentQuestion.images;
+
+      return (
+
+        <div className="grid grid-cols-3 gap-6">
+
+          {(["A","B","C"] as const).map((key)=>(
+
+            <div
+              key={key}
+              className="
+              rounded-2xl
+              border
+              bg-white
+              p-4
+              text-center
+              shadow
+              "
+            >
+
+              <img
+                src={images[key]}
+                alt={key}
+                className="
+                h-48
+                w-full
+                object-cover
+                rounded-xl
+                "
+              />
+
+              <p className="mt-3 text-2xl font-black">
+                {key}
+              </p>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      );
+
+    })()}
 
 </div>
 
@@ -1315,7 +1391,11 @@ CORRECT ANSWER
 
 </h3>
 
-Answer here
+<p className="text-3xl font-black mt-3">
+
+{currentQuestion?.answer}
+
+</p>
 
 
 </div>
