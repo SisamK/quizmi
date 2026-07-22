@@ -35,7 +35,7 @@
     "id": 5,
     "subject": "Sports",
     "type": "image",
-    "image": "/questions/q07.png",
+    "image": "/q07.png",
     "question": "Who is the Nepali footballer shown in this picture?",
     "answer": "Niraj Chamjong",
     "points": 10
@@ -44,7 +44,7 @@
     "id": 6,
     "subject": "Sports",
     "type": "image",
-    "image": "/questions/q08.png",
+    "image": "/q08.png",
     "question": "Who is the famous Norwegian footballer shown in this picture?",
     "answer": "Erling Haaland",
     "points": 10
@@ -71,9 +71,9 @@
     "type": "three-images",
     "question": "Who is the current Education Minister of Nepal?",
     "images": {
-      "A": "/questions/q11a.png",
-      "B": "/questions/q11b.png",
-      "C": "/questions/q11c.png"
+      "A": "/q11a.png",
+      "B": "/q11b.png",
+      "C": /q11c.png"
     },
     "answer": "B",
     "points": 10
@@ -234,7 +234,7 @@
     "id": 29,
     "subject": "Sports",
     "type": "image",
-    "image": "/questions/q32.png",
+    "image": "/q32.png",
     "question": "Who is this player?",
     "answer": "",
     "points": 10
