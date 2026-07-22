@@ -728,7 +728,7 @@ bg-white/30
 backdrop-blur-3xl
 border
 border-white/50
-p-5
+p-3
 shadow-xl
 "
 
