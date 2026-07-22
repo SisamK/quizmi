@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { questions} from "@/src/data/questions";
+import { questions } from "@/src/data/questions";
 
 
 const TOTAL_QUESTIONS = 52;
@@ -32,89 +32,70 @@ const houseData = [
 
 
 
-export default function GamePage(){
+export default function GamePage() {
 
 
-  const [page,setPage] =
+  const [page, setPage] =
     useState<
       "rules" | "shuffle" | "game"
     >("rules");
 
 
-
-  const [shuffled,setShuffled] =
+  const [shuffled, setShuffled] =
     useState(false);
 
 
-
-  const [clockwiseOrder,setClockwiseOrder] =
+  const [clockwiseOrder, setClockwiseOrder] =
     useState<typeof houseData[number][]>([]);
 
 
-
-  const [antiClockwiseOrder,setAntiClockwiseOrder] =
+  const [antiClockwiseOrder, setAntiClockwiseOrder] =
     useState<typeof houseData[number][]>([]);
 
 
-
-  const [currentTurn,setCurrentTurn] =
+  const [currentTurn, setCurrentTurn] =
     useState(0);
 
 
-
-  const [scores,setScores] =
+  const [scores, setScores] =
     useState({
-
-      red:0,
-      blue:0,
-      green:0,
-      yellow:0,
-
+      red: 0,
+      blue: 0,
+      green: 0,
+      yellow: 0,
     });
 
 
-
-  const [selectedQuestion,setSelectedQuestion] =
+  const [selectedQuestion, setSelectedQuestion] =
     useState<number | null>(null);
 
 
-
-  const [usedQuestions,setUsedQuestions] =
+  const [usedQuestions, setUsedQuestions] =
     useState<number[]>([]);
 
 
-
-  const [answerRevealed,setAnswerRevealed] =
+  const [answerRevealed, setAnswerRevealed] =
     useState(false);
 
 
-
-  const [awarded,setAwarded] =
+  const [awarded, setAwarded] =
     useState<string[]>([]);
 
 
 
+  function shuffleHouses() {
 
-
-
-  function shuffleHouses(){
-
-
-    if(shuffled)
-      return;
-
+    if (shuffled) return;
 
 
     const order =
       [...houseData]
       .sort(
-        ()=>Math.random()-0.5
+        () => Math.random() - 0.5
       );
 
 
-
     setClockwiseOrder(order);
-
 
 
     setAntiClockwiseOrder(
@@ -122,17 +103,13 @@ export default function GamePage(){
     );
 
 
-
     setShuffled(true);
-
 
   }
 
 
 
-
-
-  function startGame(){
+  function startGame() {
 
     setPage("game");
 
@@ -140,58 +117,42 @@ export default function GamePage(){
 
 
 
-
-
   const currentHouse =
     clockwiseOrder[currentTurn];
 
-    const currentQuestion =
-  questions.find(
-    (q) => q.id === selectedQuestion
-  );
 
-
-
-
-
-
-  function nextTurn(){
-
-
-    setCurrentTurn(
-
-      prev =>
-      (prev + 1) % 4
-
+  const currentQuestion =
+    questions.find(
+      (q) =>
+        q.id === selectedQuestion
     );
 
+
+
+  function nextTurn() {
+
+    setCurrentTurn(
+      prev =>
+      (prev + 1) % 4
+    );
 
   }
 
 
 
-
-
-
-
-  // FIXED SCORE FUNCTION
-  // Any house can get points
-
-
   function givePoints(
-    houseId:string
-  ){
+    houseId: string
+  ) {
 
 
-    if(
+    if (
       awarded.includes(houseId)
     )
       return;
 
 
 
-
-    setScores(prev=>({
+    setScores(prev => ({
 
       ...prev,
 
@@ -200,13 +161,10 @@ export default function GamePage(){
         houseId as keyof typeof prev
       ] + 10
 
-
     }));
 
 
-
-
-    setAwarded(prev=>[
+    setAwarded(prev => [
 
       ...prev,
 
@@ -214,26 +172,21 @@ export default function GamePage(){
 
     ]);
 
-
-
   }
 
 
 
+  function finishQuestion() {
 
 
-
-  function finishQuestion(){
-
-
-    if(
-      selectedQuestion===null
+    if (
+      selectedQuestion === null
     )
       return;
 
 
 
-    setUsedQuestions(prev=>[
+    setUsedQuestions(prev => [
 
       ...prev,
 
@@ -242,227 +195,241 @@ export default function GamePage(){
     ]);
 
 
-
     setSelectedQuestion(null);
-
 
 
     setAnswerRevealed(false);
 
 
-
     setAwarded([]);
-
 
 
     nextTurn();
 
-
   }
 
 
 
 
 
+// ================= RULES =================
 
 
-  // ================= RULES =================
+if (page === "rules") {
 
 
-  if(page==="rules"){
+return (
 
+<main
+className="
+h-full
+flex
+items-center
+justify-center
+"
+>
 
-    return (
 
-      <main className="
-      min-h-screen
-      flex
-      items-center
-      justify-center
-      bg-gradient-to-br
-      from-orange-300
-      to-yellow-200
-      ">
+<div
+className="
+max-w-xl
+rounded-[32px]
+bg-white/40
+backdrop-blur-3xl
+p-8
+text-center
+shadow-xl
+"
+>
 
 
-      <div className="
-      bg-white/40
-      backdrop-blur-3xl
-      rounded-[36px]
-      p-10
-      text-center
-      ">
+<h1
+className="
+text-4xl
+font-black
+"
+>
 
+🏆 HOUSE QUIZ GAME
 
-      <h1 className="
-      text-5xl
-      font-black
-      ">
+</h1>
 
-      🏆 HOUSE QUIZ GAME
 
-      </h1>
 
+<div
+className="
+mt-5
+space-y-2
+text-lg
+font-bold
+"
+>
 
 
-      <div className="
-      mt-6
-      text-xl
-      font-bold
-      space-y-3
-      ">
+<p>
+✅ Correct answer = 10 points
+</p>
 
 
-      <p>
-      ✅ Correct answer = 10 points
-      </p>
+<p>
+✅ House order decides question turns
+</p>
 
 
-      <p>
-      ✅ House order decides question turns
-      </p>
+<p>
+✅ Highest score wins
+</p>
 
 
-      <p>
-      ✅ Highest score wins
-      </p>
+<p>
+✅ One shuffle for the whole game
+</p>
 
 
-      <p>
-      ✅ One shuffle for the whole game
-      </p>
+</div>
 
 
-      </div>
 
 
+<button
 
+onClick={() =>
+setPage("shuffle")
+}
 
+className="
+mt-7
+rounded-full
+bg-black
+text-white
+px-10
+py-3
+font-black
+"
 
-      <button
+>
 
-      onClick={()=>
-      setPage("shuffle")
-      }
+CONTINUE
 
-      className="
-      mt-8
-      rounded-full
-      bg-black
-      text-white
-      px-10
-      py-4
-      text-xl
-      font-black
-      "
+</button>
 
-      >
 
-      Continue
 
-      </button>
+</div>
 
 
+</main>
 
-      </div>
+);
 
+}
 
-      </main>
 
-    );
 
-  }
 
 
 
+// ================= SHUFFLE =================
 
 
 
+if (page === "shuffle") {
 
-  // ================= SHUFFLE =================
 
+return (
 
-  if(page==="shuffle"){
+<main
+className="
+h-full
+flex
+items-center
+justify-center
+"
+>
 
 
-    return (
+<div
+className="
+max-w-3xl
+rounded-[32px]
+bg-white/40
+backdrop-blur-3xl
+p-8
+text-center
+shadow-xl
+"
+>
 
-      <main className="
-      min-h-screen
-      flex
-      items-center
-      justify-center
-      bg-gradient-to-br
-      from-blue-200
-      to-green-200
-      ">
 
+<h1
+className="
+text-4xl
+font-black
+"
+>
 
-      <div className="
-      bg-white/40
-      backdrop-blur-3xl
-      rounded-[36px]
-      p-10
-      text-center
-      ">
+🎲 SHUFFLE HOUSE ORDER
 
+</h1>
 
-      <h1 className="
-      text-5xl
-      font-black
-      ">
 
-      🎲 SHUFFLE HOUSE ORDER
 
-      </h1>
 
+{
+!shuffled && (
 
+<button
 
+onClick={shuffleHouses}
 
-      {!shuffled && (
+className="
+mt-8
+rounded-full
+bg-black
+text-white
+px-10
+py-3
+font-black
+"
 
-      <button
+>
 
-      onClick={shuffleHouses}
+SHUFFLE ONCE
 
-      className="
-      mt-8
-      rounded-full
-      bg-black
-      text-white
-      px-10
-      py-4
-      font-black
-      "
+</button>
 
-      >
+)
+}
 
-      Shuffle Once
 
-      </button>
 
-      )}
-      {
+{
 shuffled && (
 
-<div className="mt-8">
+<div
+className="
+mt-6
+grid
+grid-cols-2
+gap-6
+"
+>
 
 
-<h2 className="
-text-3xl
+<div>
+
+<h2
+className="
+text-2xl
 font-black
-">
+mb-3
+"
+>
 
-↻ CLOCKWISE ORDER
+↻ CLOCKWISE
 
 </h2>
 
-
-
-<div className="
-mt-5
-space-y-3
-">
 
 {
 clockwiseOrder.map(
@@ -474,40 +441,30 @@ clockwiseOrder.map(
 key={house.id}
 
 className="
-rounded-2xl
-p-4
+rounded-xl
+p-3
+mb-2
 font-black
-text-xl
 "
 
 style={{
-
-backgroundColor:
-house.color,
-
+backgroundColor: house.color,
 color:
 house.id==="red"
 ?
 "white"
 :
 "black"
-
 }}
 
 >
 
 {index+1}. {house.name}
 
-{
-index===0 &&
-" ⭐ FIRST PICK"
-}
-
 </div>
 
 
 )
-
 )
 
 }
@@ -518,22 +475,20 @@ index===0 &&
 
 
 
-<h2 className="
-text-3xl
+<div>
+
+<h2
+className="
+text-2xl
 font-black
-mt-10
-">
+mb-3
+"
+>
 
-↺ ANTI-CLOCKWISE ORDER
+↺ ANTI-CLOCKWISE
 
 </h2>
 
-
-
-<div className="
-mt-5
-space-y-3
-">
 
 {
 antiClockwiseOrder.map(
@@ -545,24 +500,20 @@ antiClockwiseOrder.map(
 key={house.id}
 
 className="
-rounded-2xl
-p-4
+rounded-xl
+p-3
+mb-2
 font-black
-text-xl
 "
 
 style={{
-
-backgroundColor:
-house.color,
-
+backgroundColor: house.color,
 color:
 house.id==="red"
 ?
 "white"
 :
 "black"
-
 }}
 
 >
@@ -573,7 +524,6 @@ house.id==="red"
 
 
 )
-
 )
 
 }
@@ -582,20 +532,17 @@ house.id==="red"
 
 
 
-
-
 <button
 
 onClick={startGame}
 
 className="
-mt-10
+col-span-2
 rounded-full
 bg-green-600
 text-white
 px-12
-py-5
-text-xl
+py-4
 font-black
 "
 
@@ -606,6 +553,7 @@ START GAME 🚀
 </button>
 
 
+
 </div>
 
 )
@@ -618,265 +566,53 @@ START GAME 🚀
 
 </main>
 
-)
+);
 
 }
-
-
-
-
-
-
-
-// ================= WINNER =================
-
-
-if(
-usedQuestions.length===TOTAL_QUESTIONS
-){
-
-
-const ranking =
-Object.entries(scores)
-.sort(
-(a,b)=>b[1]-a[1]
-);
-
-
-
-const winner =
-houseData.find(
-h=>h.id===ranking[0][0]
-);
-
+  
+// ================= GAME BOARD =================
 
 
 return (
 
 <main
-
 className="
-min-h-screen
-flex
-items-center
-justify-center
-bg-gradient-to-br
-from-yellow-300
-to-orange-500
-"
-
->
-
-
-<div
-
-className="
-bg-white
-rounded-[40px]
-p-12
-text-center
-shadow-2xl
-"
-
->
-
-
-<h1
-
-className="
-text-6xl
-font-black
-"
-
->
-
-🏆 WINNER
-
-</h1>
-
-
-
-
-<div
-
-className="
-mt-8
-rounded-[35px]
-p-10
-"
-
-style={{
-
-backgroundColor:
-winner?.color
-
-}}
-
->
-
-
-<h2 className="
-text-5xl
-font-black
-">
-
-{winner?.name}
-
-</h2>
-
-
-
-<p className="
-text-7xl
-font-black
-mt-5
-">
-
-{ranking[0][1]} POINTS
-
-</p>
-
-
-</div>
-
-
-
-
-<h2 className="
-text-3xl
-font-black
-mt-10
-">
-
-FINAL RANKING
-
-</h2>
-
-
-
-
-{
-ranking.map(
-(item,index)=>{
-
-
-const house =
-houseData.find(
-h=>h.id===item[0]
-);
-
-
-return (
-
-<p
-
-key={item[0]}
-
-className="
-text-2xl
-font-bold
-mt-3
-"
-
->
-
-{index+1}. {house?.name}
--
-{item[1]} pts
-
-</p>
-
-)
-
-
-}
-
-)
-
-}
-
-
-
-
-<button
-
-onClick={()=>
-window.location.reload()
-}
-
-className="
-mt-10
-rounded-full
-bg-black
-text-white
-px-10
-py-4
-font-black
-"
-
->
-
-NEW GAME
-
-</button>
-
-
-</div>
-
-
-</main>
-
-)
-
-}
-
-
-
-
-
-
-
-
-// ================= GAME BOARD =================
-
-
-
-return (
-
-<main className="
+h-full
 grid
-lg:grid-cols-3
-gap-6
-p-6
-">
+grid-cols-[360px_1fr]
+gap-5
+p-4
+overflow-hidden
+"
+>
 
 
-
-
-
-{/* QUESTIONS */}
-
+{/* QUESTION SELECTOR */}
 
 
 <section
 
 className="
-rounded-[36px]
+rounded-[32px]
 border
-border-white/60
+border-white/50
 bg-white/25
 backdrop-blur-3xl
-p-6
+p-5
+overflow-hidden
 "
 
 >
 
 
-<h2 className="
-text-3xl
+<h2
+className="
+text-2xl
 font-black
-mb-6
-">
+mb-4
+text-center
+"
+>
 
 QUESTIONS
 
@@ -884,22 +620,23 @@ QUESTIONS
 
 
 
-
-<div className="
+<div
+className="
 grid
-grid-cols-4
-gap-4
-">
+grid-cols-5
+gap-2
+"
+>
 
 
 {
 Array.from({
-length:TOTAL_QUESTIONS
+length: TOTAL_QUESTIONS
 })
 .map((_,i)=>{
 
 
-const number=i+1;
+const number = i + 1;
 
 
 const used =
@@ -915,15 +652,15 @@ key={number}
 
 disabled={used}
 
-onClick={()=>
+onClick={() =>
 setSelectedQuestion(number)
 }
 
 className={`
-h-16
-rounded-2xl
+aspect-square
+rounded-xl
 font-black
-text-xl
+text-lg
 
 ${
 used
@@ -941,9 +678,7 @@ used
 
 </button>
 
-
 )
-
 
 })
 
@@ -960,40 +695,45 @@ used
 
 
 
+{/* RIGHT DASHBOARD */}
+
+
+<section
+
+className="
+grid
+grid-rows-[auto_auto_1fr]
+gap-5
+overflow-hidden
+"
+
+>
 
 
 
-
-<section className="
-lg:col-span-2
-space-y-6
-">
-
-
-
-
-
-{/* TURN */}
+{/* CURRENT TURN */}
 
 
 
 <div
 
 className="
-rounded-[36px]
+rounded-[32px]
 bg-black
 text-white
-p-6
+p-5
 text-center
 "
 
 >
 
 
-<h2 className="
-text-3xl
+<h2
+className="
+text-2xl
 font-black
-">
+"
+>
 
 🎯 CURRENT TURN
 
@@ -1001,23 +741,32 @@ font-black
 
 
 
-<p className="
-text-4xl
+<p
+className="
+text-3xl
 font-black
-mt-3
-">
+mt-2
+"
+>
 
 {currentHouse?.name}
 
-<br></br>choose<br></br> number for your question
+</p>
+
+
+<p
+className="
+text-lg
+font-bold
+"
+>
+
+Choose a question number
 
 </p>
 
 
 </div>
-
-
-
 
 
 
@@ -1032,28 +781,24 @@ mt-3
 <div
 
 className="
-rounded-[36px]
+rounded-[32px]
 border
-border-white/60
+border-white/50
 bg-white/25
 backdrop-blur-3xl
-shadow-[0_10px_40px_rgba(0,0,0,.08)]
-p-6
+p-5
 "
 
 >
 
 
-
 <h2
 
 className="
-text-3xl
+text-2xl
 font-black
-uppercase
-tracking-wider
 text-center
-mb-8
+mb-4
 "
 
 >
@@ -1065,12 +810,15 @@ LIVE SCOREBOARD
 
 
 
-<div className="
-grid
-grid-cols-2
-gap-6
-">
+<div
 
+className="
+grid
+grid-cols-4
+gap-3
+"
+
+>
 
 
 {
@@ -1083,20 +831,18 @@ houseData.map(
 key={house.id}
 
 className="
-rounded-[30px]
-border
-border-white/60
+rounded-2xl
 bg-white/35
-backdrop-blur-3xl
-p-6
-hover:scale-105
-transition
+border
+border-white/50
+p-3
+text-center
 "
 
 style={{
 
 boxShadow:
-`0 0 28px ${house.color}80`
+`0 0 25px ${house.color}70`
 
 }}
 
@@ -1106,30 +852,34 @@ boxShadow:
 <div
 
 className="
-h-3
+h-2
 rounded-full
-mb-5
+mb-3
 "
 
 style={{
 
 backgroundColor:
-house.color,
-
-boxShadow:
-`0 0 20px ${house.color}`
+house.color
 
 }}
 
- />
+>
 
 
 
-<h3 className="
-text-2xl
+</div>
+
+
+
+<h3
+
+className="
 font-black
-text-center
-">
+text-sm
+"
+
+>
 
 {house.name}
 
@@ -1137,45 +887,33 @@ text-center
 
 
 
-
-<div
+<p
 
 className="
-mt-6
-rounded-2xl
-bg-white/40
-border
-border-white/50
-py-5
-text-center
+text-4xl
+font-black
+mt-2
 "
 
 >
-
-
-<p className="
-text-6xl
-font-black
-">
 
 {scores[house.id]}
 
 </p>
 
 
+<p
 
-<p className="
-text-sm
+className="
+text-xs
 font-bold
-">
+"
+
+>
 
 POINTS
 
 </p>
-
-
-
-</div>
 
 
 </div>
@@ -1200,34 +938,43 @@ POINTS
 
 
 
-{/* QUESTION */}
+
+{/* QUESTION AREA */}
 
 
 
 <div
 
 className="
-rounded-[36px]
+rounded-[32px]
 border
-border-white/60
+border-white/50
 bg-white/25
 backdrop-blur-3xl
-p-8
+p-6
+overflow-hidden
 "
 
 >
 
 
+
 {
-selectedQuestion===null
+selectedQuestion === null
 
 ?
 
-<h2 className="
-text-4xl
+
+<h2
+
+className="
+text-3xl
 font-black
 text-center
-">
+mt-10
+"
+
+>
 
 SELECT QUESTION
 
@@ -1236,13 +983,18 @@ SELECT QUESTION
 
 :
 
+
 <>
 
 
-<h2 className="
-text-4xl
+<h2
+
+className="
+text-3xl
 font-black
-">
+"
+
+>
 
 QUESTION {selectedQuestion}
 
@@ -1251,86 +1003,164 @@ QUESTION {selectedQuestion}
 
 
 
+
 <div
-  className="
-  mt-8
-  bg-white
-  rounded-2xl
-  p-8
-  space-y-6
-  "
+
+className="
+mt-4
+bg-white
+rounded-2xl
+p-5
+overflow-hidden
+"
+
 >
 
-  {/* Question */}
 
-  <p className="text-3xl font-bold">
-    {currentQuestion?.question}
-  </p>
+<p
 
-  {/* Single Image */}
+className="
+text-xl
+font-bold
+"
 
-  {currentQuestion?.type === "image" &&
-    currentQuestion.image && (
+>
 
-      <img
-        src={currentQuestion.image}
-        alt="Question"
-        className="mx-auto max-h-80 rounded-2xl"
-      />
+{currentQuestion?.question}
 
-  )}
+</p>
 
-  {/* Three Images */}
 
-  {currentQuestion?.type === "three-images" &&
-    currentQuestion.images && (() => {
 
-      const images = currentQuestion.images;
 
-      return (
 
-        <div className="grid grid-cols-3 gap-6">
+{
+currentQuestion?.type === "image"
+&&
+currentQuestion.image
+&&
 
-          {(["A","B","C"] as const).map((key)=>(
+(
 
-            <div
-              key={key}
-              className="
-              rounded-2xl
-              border
-              bg-white
-              p-4
-              text-center
-              shadow
-              "
-            >
+<img
 
-              <img
-                src={images[key]}
-                alt={key}
-                className="
-                h-48
-                w-full
-                object-cover
-                rounded-xl
-                "
-              />
+src={currentQuestion.image}
 
-              <p className="mt-3 text-2xl font-black">
-                {key}
-              </p>
+alt="Question"
 
-            </div>
+className="
+mx-auto
+mt-5
+max-h-[240px]
+rounded-xl
+object-contain
+"
 
-          ))}
+/>
 
-        </div>
+)
 
-      );
+}
 
-    })()}
+
+
+
+
+
+{
+currentQuestion?.type === "three-images"
+&&
+currentQuestion.images
+&&
+
+(
+
+<div
+
+className="
+grid
+grid-cols-3
+gap-3
+mt-5
+"
+
+>
+
+
+{
+(["A","B","C"] as const)
+.map(
+(key)=>(
+
+
+<div
+
+key={key}
+
+className="
+rounded-xl
+border
+p-2
+text-center
+"
+
+>
+
+
+<img
+
+src={
+currentQuestion.images[key]
+}
+
+alt={key}
+
+className="
+h-32
+w-full
+object-cover
+rounded-lg
+"
+
+/>
+
+
+<p
+
+className="
+font-black
+"
+
+>
+
+{key}
+
+</p>
+
 
 </div>
+
+
+)
+
+)
+
+}
+
+
+</div>
+
+)
+
+}
+
+
+
+</div>
+
+
+
+
 
 
 
@@ -1339,19 +1169,20 @@ QUESTION {selectedQuestion}
 {
 !answerRevealed &&
 
+
 <button
 
-onClick={()=>
+onClick={() =>
 setAnswerRevealed(true)
 }
 
 className="
-mt-8
+mt-5
 rounded-full
 bg-orange-600
 text-white
-px-10
-py-4
+px-8
+py-3
 font-black
 "
 
@@ -1361,7 +1192,10 @@ REVEAL ANSWER
 
 </button>
 
+
 }
+
+
 
 
 
@@ -1372,26 +1206,42 @@ REVEAL ANSWER
 {
 answerRevealed &&
 
+
 <>
 
 
-<div className="
-mt-8
-bg-green-100
-rounded-2xl
-p-6
-">
+<div
 
-<h3 className="
-text-2xl
+className="
+mt-5
+rounded-2xl
+bg-green-100
+p-4
+"
+
+>
+
+
+<h3
+className="
 font-black
-">
+text-xl
+"
+>
 
 CORRECT ANSWER
 
 </h3>
 
-<p className="text-3xl font-black mt-3">
+
+<p
+
+className="
+text-2xl
+font-black
+"
+
+>
 
 {currentQuestion?.answer}
 
@@ -1405,13 +1255,16 @@ CORRECT ANSWER
 
 
 
+<div
 
-<div className="
+className="
 grid
-md:grid-cols-2
-gap-5
-mt-8
-">
+grid-cols-4
+gap-3
+mt-5
+"
+
+>
 
 
 {
@@ -1432,15 +1285,15 @@ key={house.id}
 
 disabled={done}
 
-onClick={()=>
+onClick={() =>
 givePoints(house.id)
 }
 
 className="
-rounded-3xl
-p-6
+rounded-xl
+p-3
 font-black
-text-xl
+text-sm
 "
 
 style={{
@@ -1462,13 +1315,13 @@ done
 {
 done
 ?
-"✅ AWARDED"
+"✅"
 :
 `${house.name} +10`
 }
 
-
 </button>
+
 
 )
 
@@ -1493,12 +1346,12 @@ done
 onClick={finishQuestion}
 
 className="
-mt-8
+mt-5
 rounded-full
 bg-black
 text-white
-px-12
-py-4
+px-10
+py-3
 font-black
 "
 
@@ -1515,6 +1368,7 @@ FINISH QUESTION
 }
 
 
+
 </>
 
 }
@@ -1528,9 +1382,6 @@ FINISH QUESTION
 
 
 
-
 </main>
 
 );
-
-}
