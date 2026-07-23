@@ -138,8 +138,8 @@
     "id": 17,
     "subject": "Mathematics",
     "type": "text",
-    "question": "Simplify: 128 ÷ {40 − 6 × (7 − 2)} + 6",
-    "answer": "14",
+    "question": "Simplify: 128 ÷ {40 − 6 × (7 − 2) + 6}",
+    "answer": "8",
     "points": 10
   },
   {
